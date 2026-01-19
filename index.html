@@ -432,7 +432,7 @@
                 <p class="text-center" style="margin-bottom: 4rem; color: var(--text-muted);">No obligation. No generic advice. Just a clear view of where you’re losing revenue — and how to recover it.</p>
                 
                 <div class="contact-form">
-                    <form id="contact-form" action="https://script.google.com/macros/s/AKfycbzBvtYwDCL8Ll65V6cwcbGgRg3KUoDfbTkkRfOINzv4knYx00djWiM_BK4KkSGymO5Q/exec" method="POST">
+                    <form id="contact-form" method="POST" data-action="https://script.google.com/macros/s/AKfycbzBvtYwDCL8Ll65V6cwcbGgRg3KUoDfbTkkRfOINzv4knYx00djWiM_BK4KkSGymO5Q/exec">
                         <!-- Honeypot -->
                         <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off">
                         
@@ -623,9 +623,10 @@
                 
                 // Prepare form data
                 const formData = new FormData(this);
+                const scriptUrl = this.getAttribute('data-action');
                 
                 // Submit to Google Apps Script
-                fetch(this.action, {
+                fetch(scriptUrl, {
                     method: 'POST',
                     body: formData,
                     mode: 'no-cors'
