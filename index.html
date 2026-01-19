@@ -432,7 +432,7 @@
                 <p class="text-center" style="margin-bottom: 4rem; color: var(--text-muted);">No obligation. No generic advice. Just a clear view of where you’re losing revenue — and how to recover it.</p>
                 
                 <div class="contact-form">
-                    <form id="contact-form" method="POST" data-action="https://script.google.com/macros/s/AKfycbzBvtYwDCL8Ll65V6cwcbGgRg3KUoDfbTkkRfOINzv4knYx00djWiM_BK4KkSGymO5Q/exec">
+                    <form id="contact-form" action="https://script.google.com/macros/s/AKfycbzBvtYwDCL8Ll65V6cwcbGgRg3KUoDfbTkkRfOINzv4knYx00djWiM_BK4KkSGymO5Q/exec" method="POST" target="hidden-iframe">
                         <!-- Honeypot -->
                         <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off">
                         
@@ -466,6 +466,9 @@
                             Or <a href="https://calendly.com/otobrix-ai/audit" target="_blank" rel="noopener" style="color: var(--primary);">book a 20-minute call →</a>
                         </p>
                     </form>
+                    
+                    <!-- Hidden iframe for form submission -->
+                    <iframe name="hidden-iframe" style="display:none"></iframe>
                 </div>
             </div>
         </section>
@@ -589,25 +592,25 @@
             resultsDiv.style.display = 'block';
         }
         
-        // Form submission with Google Apps Script
+        // Form submission via iframe
         const contactForm = document.getElementById('contact-form');
         if (contactForm) {
             contactForm.addEventListener('submit', function(e) {
-                e.preventDefault();
-                
-                // Client-side validation
-                const name = this.name.value.trim();
-                const email = this.email.value.trim();
-                const message = this.message.value.trim();
+                // Validate honeypot
                 const honeypot = this._honey.value;
-                
-                // Check honeypot
                 if (honeypot) {
+                    e.preventDefault();
                     console.log('Bot detected');
                     return;
                 }
                 
+                // Validate required fields
+                const name = this.name.value.trim();
+                const email = this.email.value.trim();
+                const message = this.message.value.trim();
+                
                 if (!name || !email || !message) {
+                    e.preventDefault();
                     alert('Please fill in all required fields.');
                     return;
                 }
@@ -617,26 +620,13 @@
                 
                 // Show loading state
                 const submitBtn = this.querySelector('button[type="submit"]');
-                const originalText = submitBtn.textContent;
                 submitBtn.textContent = 'Sending...';
                 submitBtn.disabled = true;
                 
-                // Prepare form data
-                const formData = new FormData(this);
-                const scriptUrl = this.getAttribute('data-action');
-                
-                // Submit to Google Apps Script (fire and forget)
-                fetch(scriptUrl, {
-                    method: 'POST',
-                    body: formData
-                }).catch(() => {
-                    // Ignore errors - email was likely sent anyway
-                });
-                
-                // Redirect immediately
+                // Form will submit to iframe, then redirect
                 setTimeout(() => {
                     window.location.href = 'thanks.html';
-                }, 500);
+                }, 1000);
             });
         }
         
