@@ -618,15 +618,19 @@
                 // Track form submission
                 trackEvent('form_submitted', 'conversion');
                 
-                // Show loading state
+                // Show loading state (delayed to avoid cancelling submission)
                 const submitBtn = this.querySelector('button[type="submit"]');
-                submitBtn.textContent = 'Sending...';
-                submitBtn.disabled = true;
+                const originalText = submitBtn.textContent;
                 
-                // Form will submit to iframe, then redirect
+                setTimeout(() => {
+                    submitBtn.textContent = 'Sending...';
+                    submitBtn.disabled = true;
+                }, 10);
+                
+                // Redirect after a delay to allow the submission to complete
                 setTimeout(() => {
                     window.location.href = 'thanks.html';
-                }, 1000);
+                }, 2000);
             });
         }
         
