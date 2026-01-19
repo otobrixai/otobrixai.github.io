@@ -625,21 +625,18 @@
                 const formData = new FormData(this);
                 const scriptUrl = this.getAttribute('data-action');
                 
-                // Submit to Google Apps Script
+                // Submit to Google Apps Script (fire and forget)
                 fetch(scriptUrl, {
                     method: 'POST',
-                    body: formData,
-                    mode: 'no-cors'
-                })
-                .then(() => {
-                    // With no-cors, we can't read the response, so just redirect on success
-                    window.location.href = 'thanks.html';
-                })
-                .catch(error => {
-                    console.error('Error:', error);
-                    // Even on error, redirect to thanks page since email was likely sent
-                    window.location.href = 'thanks.html';
+                    body: formData
+                }).catch(() => {
+                    // Ignore errors - email was likely sent anyway
                 });
+                
+                // Redirect immediately
+                setTimeout(() => {
+                    window.location.href = 'thanks.html';
+                }, 500);
             });
         }
         
