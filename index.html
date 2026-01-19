@@ -592,45 +592,72 @@
             resultsDiv.style.display = 'block';
         }
         
-        // Form submission via iframe
+        // Optimized Form Submission
         const contactForm = document.getElementById('contact-form');
         if (contactForm) {
             contactForm.addEventListener('submit', function(e) {
-                // Validate honeypot
-                const honeypot = this._honey.value;
+                e.preventDefault(); // Always prevent default to handle via JS
+                
+                console.log('Form submission started');
+                
+                // Validate fields
+                const nameInput = this.querySelector('[name="name"]');
+                const emailInput = this.querySelector('[name="email"]');
+                const messageInput = this.querySelector('[name="message"]');
+                const honeyInput = this.querySelector('[name="_honey"]');
+                
+                const name = nameInput ? nameInput.value.trim() : '';
+                const email = emailInput ? emailInput.value.trim() : '';
+                const message = messageInput ? messageInput.value.trim() : '';
+                const honeypot = honeyInput ? honeyInput.value : '';
+                
                 if (honeypot) {
-                    e.preventDefault();
-                    console.log('Bot detected');
+                    console.warn('Bot detected via honeypot');
                     return;
                 }
                 
-                // Validate required fields
-                const name = this.name.value.trim();
-                const email = this.email.value.trim();
-                const message = this.message.value.trim();
-                
                 if (!name || !email || !message) {
-                    e.preventDefault();
                     alert('Please fill in all required fields.');
                     return;
                 }
                 
-                // Track form submission
-                trackEvent('form_submitted', 'conversion');
+                // Track event (wrapped in try-catch to prevent script failure)
+                try {
+                    trackEvent('form_submitted', 'conversion');
+                } catch (err) {
+                    console.error('Analytics error:', err);
+                }
                 
-                // Show loading state (delayed to avoid cancelling submission)
+                // UI States
                 const submitBtn = this.querySelector('button[type="submit"]');
                 const originalText = submitBtn.textContent;
+                submitBtn.textContent = 'Sending...';
+                submitBtn.disabled = true;
                 
-                setTimeout(() => {
-                    submitBtn.textContent = 'Sending...';
-                    submitBtn.disabled = true;
-                }, 10);
+                // Prepare Data
+                const formData = new FormData(this);
+                const actionUrl = this.getAttribute('action');
                 
-                // Redirect after a delay to allow the submission to complete
-                setTimeout(() => {
+                console.log('Sending data to:', actionUrl);
+                
+                // Use fetch with 'no-cors' to avoid preflight issues
+                // This is the most reliable way to send data to Google Script cross-domain
+                fetch(actionUrl, {
+                    method: 'POST',
+                    body: formData,
+                    mode: 'no-cors'
+                })
+                .then(() => {
+                    console.log('Submission successful (opaque response)');
                     window.location.href = 'thanks.html';
-                }, 2000);
+                })
+                .catch((error) => {
+                    console.error('Submission error:', error);
+                    // Still redirect because Google Script often records the hit even if catch triggers
+                    setTimeout(() => {
+                        window.location.href = 'thanks.html';
+                    }, 500);
+                });
             });
         }
         
