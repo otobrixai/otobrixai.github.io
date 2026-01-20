@@ -496,7 +496,10 @@
     <script>
         // Performance tracking
         const loadTime = Date.now() - performance.timing.navigationStart;
-        document.getElementById('load-time').textContent = `Page loaded in ${loadTime}ms`;
+        const loadTimeElement = document.getElementById('load-time');
+        if (loadTimeElement) {
+            loadTimeElement.textContent = `Page loaded in ${loadTime}ms`;
+        }
         
         // Mobile menu
         const mobileMenuBtn = document.getElementById('mobileMenuBtn');
