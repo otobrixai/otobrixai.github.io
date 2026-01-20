@@ -9,13 +9,21 @@
     <!-- Favicon -->
     <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🤖</text></svg>">
     
+    <!-- Canonical Tag (Critical for SEO) -->
+    <link rel="canonical" href="https://otobrixai.com/">
+    
     <!-- OG Tags -->
-    <meta property="og:title" content="Otobrix AI: n8n Churn Prediction for E-commerce">
-    <meta property="og:description" content="Dhaka-based n8n specialist. Automated retention workflows for Shopify/WooCommerce. Free audit.">
-    <meta property="og:url" content="https://otobrix.ai">
+    <meta property="og:title" content="Otobrix AI | n8n Automation & Churn Recover for E-commerce">
+    <meta property="og:description" content="Dhaka-based n8n agency. We build automated retention systems for Shopify & WooCommerce stores. Recover 30% of lost revenue.">
+    <meta property="og:url" content="https://otobrixai.com">
     <meta property="og:type" content="website">
-    <meta name="twitter:card" content="summary">
-    <meta name="twitter:creator" content="@monuhoq">
+    <meta property="og:image" content="https://otobrixai.com/assets/og-image.jpg">
+    
+    <!-- Twitter/Social Card Data -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Otobrix AI | n8n Automation Agency">
+    <meta name="twitter:description" content="Stop losing revenue to churn. Automated recovery workflows for e-commerce.">
+    <meta name="twitter:image" content="https://otobrixai.com/assets/og-image.jpg">
     
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -754,24 +762,45 @@
     <script type="application/ld+json">
     {
         "@context": "https://schema.org",
-        "@type": "ProfessionalService",
-        "name": "Otobrix AI",
-        "url": "https://otobrix.ai",
-        "description": "Dhaka-based n8n specialist providing automated retention workflows for e-commerce businesses.",
-        "areaServed": "Global",
-        "serviceType": "n8n Automation, Churn Prediction, Customer Retention",
-        "provider": {
-            "@type": "Person",
-            "name": "Md",
-            "url": "https://twitter.com/monuhoq",
-            "sameAs": ["https://twitter.com/monuhoq"]
-        },
-        "offers": {
-            "@type": "Offer",
-            "name": "Churn Prediction Audit",
-            "price": "500",
-            "priceCurrency": "USD"
-        }
+        "@graph": [
+            {
+                "@type": "ProfessionalService",
+                "@id": "https://otobrixai.com/#organization",
+                "name": "Otobrix AI",
+                "url": "https://otobrixai.com",
+                "logo": "https://otobrixai.com/assets/logo.png",
+                "description": "Dhaka-based n8n automation agency specializing in churn prediction and customer retention for e-commerce.",
+                "address": {
+                    "@type": "PostalAddress",
+                    "addressLocality": "Dhaka",
+                    "addressCountry": "BD"
+                },
+                "founder": {
+                    "@type": "Person",
+                    "name": "Md Monzurul Hoque",
+                    "url": "https://www.linkedin.com/in/md-monzurul-hoque/",
+                    "sameAs": ["https://www.linkedin.com/in/md-monzurul-hoque/"]
+                },
+                "priceRange": "$$"
+            },
+            {
+                "@type": "Service",
+                "name": "Retention Audit",
+                "provider": {"@id": "https://otobrixai.com/#organization"},
+                "description": "Comprehensive analysis of e-commerce churn patterns and revenue leakage.",
+                "offers": {
+                    "@type": "Offer",
+                    "price": "500",
+                    "priceCurrency": "USD"
+                }
+            },
+            {
+                "@type": "Service",
+                "name": "n8n Automation Implementation",
+                "provider": {"@id": "https://otobrixai.com/#organization"},
+                "description": "Custom n8n workflow development for automated customer recovery email/SMS sequences."
+            }
+        ]
     }
     </script>
 </body>
