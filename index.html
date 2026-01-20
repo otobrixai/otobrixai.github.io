@@ -3,805 +3,132 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Otobrix AI: n8n Churn Prediction for E-commerce</title>
-    <meta name="description" content="Dhaka-based n8n specialist. Automated retention workflows for Shopify/WooCommerce. Free audit.">
+    <title>Otobrix AI - Coming Soon</title>
+    <meta name="description" content="Otobrix AI is currently under construction. Automated retention workflows for e-commerce.">
     
     <!-- Favicon -->
     <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🤖</text></svg>">
-    
-    <!-- Canonical Tag (Critical for SEO) -->
-    <link rel="canonical" href="https://otobrixai.com/">
-    
-    <!-- OG Tags -->
-    <meta property="og:title" content="Otobrix AI | n8n Automation & Churn Recover for E-commerce">
-    <meta property="og:description" content="Dhaka-based n8n agency. We build automated retention systems for Shopify & WooCommerce stores. Recover 30% of lost revenue.">
-    <meta property="og:url" content="https://otobrixai.com">
-    <meta property="og:type" content="website">
-    <meta property="og:image" content="https://otobrixai.com/assets/og-image.jpg">
-    
-    <!-- Twitter/Social Card Data -->
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Otobrix AI | n8n Automation Agency">
-    <meta name="twitter:description" content="Stop losing revenue to churn. Automated recovery workflows for e-commerce.">
-    <meta name="twitter:image" content="https://otobrixai.com/assets/og-image.jpg">
     
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700;800&family=Inter:wght@700;800&display=swap" rel="stylesheet">
     
-    <!-- Inline Critical CSS -->
     <style>
         /* Reset & Base */
-        *{margin:0;padding:0;box-sizing:border-box}html{scroll-behavior:smooth}body{font-family:'JetBrains Mono',monospace;background:#0a0a0f;color:#e2e8f0;line-height:1.6;font-size:16px;overflow-x:hidden;-webkit-font-smoothing:antialiased}
+        *{margin:0;padding:0;box-sizing:border-box}
+        body{
+            font-family:'JetBrains Mono',monospace;
+            background:#0a0a0f;
+            color:#e2e8f0;
+            line-height:1.6;
+            height:100vh;
+            display:flex;
+            flex-direction:column;
+            align-items:center;
+            justify-content:center;
+            text-align:center;
+            overflow:hidden;
+        }
         
         /* Variables */
-        :root{--bg:#0a0a0f;--surface:#12121f;--primary:#00e8d0;--text:#e2e8f0;--text-muted:#94a3b8;--border:rgba(255,255,255,0.08)}
+        :root{--bg:#0a0a0f;--primary:#00e8d0;--text-muted:#94a3b8}
         
-        /* Typography */
-        h1,h2,h3,h4{font-family:'JetBrains Mono',monospace;font-weight:700;line-height:1.2;margin-bottom:1rem}h1{font-size:clamp(2rem,5vw,3rem)}h2{font-size:clamp(1.75rem,4vw,2.5rem);margin-bottom:2rem}h3{font-size:1.5rem}p{margin-bottom:1.5rem}a{color:var(--primary);text-decoration:none;transition:opacity 0.2s}a:hover{opacity:0.8}
+        /* Content */
+        .container{padding:2rem;max-width:600px;position:relative;z-index:10}
         
-        /* Utilities */
-        .container{width:100%;max-width:1200px;margin:0 auto;padding:0 1.5rem}.section{padding:5rem 0}.text-center{text-align:center}.text-muted{color:var(--text-muted)}.primary-color{color:var(--primary)}
+        .logo{
+            font-family:'Inter',sans-serif;
+            font-weight:800;
+            font-size:2.5rem;
+            margin-bottom:2rem;
+            display:inline-block;
+        }
+        .primary-color{color:var(--primary)}
         
-        /* Buttons */
-        .btn{display:inline-block;padding:1.25rem 2.5rem;border-radius:8px;font-family:'JetBrains Mono',monospace;font-weight:700;font-size:1rem;cursor:pointer;transition:transform 0.2s,box-shadow 0.2s;text-align:center;min-height:44px;min-width:44px;border:none}.btn-primary{background:var(--primary);color:var(--bg)}.btn-primary:hover{transform:translateY(-2px);box-shadow:0 4px 12px rgba(0,232,208,0.3)}.btn-secondary{background:transparent;color:var(--primary);border:2px solid var(--primary)}.btn-secondary:hover{background:rgba(0,232,208,0.1)}
+        h1{
+            font-size:1.5rem;
+            margin-bottom:1rem;
+            font-weight:700;
+        }
         
-        /* Cards */
-        .card{background:var(--surface);border-radius:8px;padding:2rem;border:1px solid var(--border);backdrop-filter:blur(10px);transition:transform 0.3s,box-shadow 0.3s}.card:hover{transform:translateY(-4px);box-shadow:0 8px 32px rgba(0,232,208,0.1)}
+        p{
+            color:var(--text-muted);
+            margin-bottom:2rem;
+            font-size:1rem;
+        }
         
-        /* Skip Link */
-        .skip-link{position:absolute;top:-40px;left:0;background:var(--primary);color:var(--bg);padding:8px;z-index:1001}.skip-link:focus{top:0}
+        .status-badge {
+            display:inline-flex;
+            align-items:center;
+            gap:0.5rem;
+            padding:0.5rem 1rem;
+            background:rgba(0, 232, 208, 0.1);
+            border:1px solid rgba(0, 232, 208, 0.2);
+            border-radius:20px;
+            color:var(--primary);
+            font-size:0.875rem;
+            margin-bottom:2rem;
+        }
         
-        /* Header */
-        .header{padding:1.5rem 0;position:sticky;top:0;background:rgba(10,10,15,0.95);backdrop-filter:blur(10px);z-index:100;border-bottom:1px solid var(--border)}.nav-container{display:flex;justify-content:space-between;align-items:center}.logo{font-family:'Inter',sans-serif;font-weight:800;font-size:1.5rem}.nav-links{display:flex;gap:2rem;align-items:center}@media(max-width:768px){.nav-links{display:none}}.mobile-menu-btn{display:none;background:none;border:none;color:var(--text);font-size:1.5rem;cursor:pointer;width:44px;height:44px}@media(max-width:768px){.mobile-menu-btn{display:block}}
+        .pulse {
+            width:8px;
+            height:8px;
+            background:var(--primary);
+            border-radius:50%;
+            animation:pulse 2s infinite;
+        }
         
-        /* Hero */
-        .hero{padding:6rem 0 4rem;position:relative;overflow:hidden}.hero::before{content:'';position:absolute;top:0;left:0;right:0;bottom:0;background:radial-gradient(circle at 20% 50%,rgba(0,232,208,0.1)0%,transparent 50%),radial-gradient(circle at 80% 20%,rgba(0,232,208,0.05)0%,transparent 50%);z-index:-1}.hero-content{max-width:800px;margin:0 auto;text-align:center}.hero h1{margin-bottom:1.5rem}.hero p{font-size:1.25rem;margin-bottom:3rem}.cta-buttons{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;margin-bottom:2rem}@media(max-width:640px){.cta-buttons{flex-direction:column;align-items:center}}.hero-note{background:rgba(18,18,31,0.5);border-radius:8px;padding:1rem;margin-top:3rem;border-left:3px solid var(--primary)}
+        @keyframes pulse {
+            0% {box-shadow:0 0 0 0 rgba(0, 232, 208, 0.7)}
+            70% {box-shadow:0 0 0 10px rgba(0, 232, 208, 0)}
+            100% {box-shadow:0 0 0 0 rgba(0, 232, 208, 0)}
+        }
         
-        /* Trust Metrics */
-        .trust-metrics{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:1.5rem;margin:3rem 0}.metric{text-align:center;padding:1.5rem}.metric-value{font-family:'JetBrains Mono',monospace;font-size:2rem;font-weight:700;color:var(--primary);margin-bottom:0.5rem;font-feature-settings:"tnum";font-variant-numeric:tabular-nums;white-space:nowrap}.metric-label{color:var(--text-muted);font-size:0.875rem}
-        
-        /* Services */
-        .services-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:2rem;margin:3rem 0}.service-features{list-style:none;margin:1.5rem 0}.service-features li{margin-bottom:0.75rem;padding-left:1.5rem;position:relative}.service-features li::before{content:"→";position:absolute;left:0;color:var(--primary)}.service-note{font-size:0.875rem;color:var(--text-muted);font-style:italic;margin-top:1rem}
-        
-        /* Steps */
-        .steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:2rem;margin:3rem 0}.step{text-align:center}.step-number{width:48px;height:48px;background:var(--primary);color:var(--bg);border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'JetBrains Mono',monospace;font-size:1.25rem;font-weight:700;margin:0 auto 1rem}
-        
-        /* Calculator */
-        .calculator{background:var(--surface);border-radius:8px;padding:2rem;margin:3rem 0}.input-group{margin-bottom:1.5rem}.input-group label{display:block;margin-bottom:0.5rem;font-weight:500}.input-group input{width:100%;padding:0.75rem;background:var(--bg);border:1px solid var(--border);border-radius:4px;color:var(--text);font-family:'JetBrains Mono',monospace}.calculator-results{margin-top:2rem;padding-top:2rem;border-top:1px solid var(--border);display:none}.result{display:flex;justify-content:space-between;margin-bottom:1rem;padding:1rem;background:var(--bg);border-radius:4px}.number{font-family:'JetBrains Mono',monospace;font-size:1.25rem}.highlight{color:var(--primary)}
-        
-        /* Case Studies */
-        .case-studies{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:2rem;margin:3rem 0}.case-study-stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:1rem;margin:1.5rem 0}.stat{text-align:center;padding:1rem;background:var(--bg);border-radius:4px}.stat-value{font-family:'JetBrains Mono',monospace;font-size:1.5rem;font-weight:700;color:var(--primary);margin-bottom:0.25rem}.stat-label{color:var(--text-muted);font-size:0.875rem}
-        
-        /* Testimonials */
-        .testimonials{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:2rem;margin:3rem 0}blockquote{background:var(--surface);border-left:4px solid var(--primary);padding:1.5rem;border-radius:8px}blockquote footer{margin-top:1rem;font-size:0.875rem;color:var(--text-muted)}
-        
-        /* Pricing */
-        .pricing{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:2rem;margin:3rem 0}.plan-price{font-family:'JetBrains Mono',monospace;font-size:2rem;font-weight:700;color:var(--primary);margin:1rem 0}.plan-price span{font-size:1rem;color:var(--text-muted)}.badge{display:inline-block;background:var(--primary);color:var(--bg);padding:0.25rem 0.75rem;border-radius:12px;font-size:0.75rem;font-weight:700;margin-bottom:1rem}
-        
-        /* About */
-        .about{text-align:center;max-width:800px;margin:0 auto;padding:3rem;background:var(--surface);border-radius:8px}.tech-stack{display:inline-flex;flex-wrap:wrap;gap:0.5rem;margin:1.5rem 0}.tech-item{padding:0.5rem 1rem;background:var(--bg);border-radius:4px;font-size:0.875rem}
-        
-        /* Contact */
-        .contact-form{max-width:600px;margin:3rem auto 0}.form-group{margin-bottom:1.5rem}.form-group label{display:block;margin-bottom:0.5rem;font-weight:500}.form-group input,.form-group textarea{width:100%;padding:0.75rem;background:var(--bg);border:1px solid var(--border);border-radius:4px;color:var(--text);font-family:'JetBrains Mono',monospace}.form-group textarea{min-height:120px;resize:vertical}.form-note{font-size:0.875rem;color:var(--text-muted);margin-top:1rem}
+        /* Background */
+        .bg-glow {
+            position:absolute;
+            top:50%;
+            left:50%;
+            transform:translate(-50%, -50%);
+            width:600px;
+            height:600px;
+            background:radial-gradient(circle, rgba(0,232,208,0.05) 0%, transparent 70%);
+            z-index:-1;
+            pointer-events:none;
+        }
         
         /* Footer */
-        .footer{padding:3rem 0;border-top:1px solid var(--border);margin-top:5rem}.footer-content{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:2rem;text-align:center}.performance-badge{font-family:'JetBrains Mono',monospace;font-size:0.875rem;color:var(--text-muted)}
+        footer {
+            margin-top:auto;
+            padding-bottom:2rem;
+            font-size:0.875rem;
+            color:var(--text-muted);
+        }
         
-        /* Mobile Menu */
-        .mobile-menu{position:fixed;top:0;right:-100%;width:100%;height:100vh;background:var(--bg);z-index:1000;padding:2rem;transition:right 0.3s ease}.mobile-menu.active{right:0}.mobile-menu-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:3rem}.mobile-menu-close{background:none;border:none;color:var(--text);font-size:1.5rem;cursor:pointer;width:44px;height:44px}.mobile-nav-links{display:flex;flex-direction:column;gap:1.5rem}
-        
-        /* Responsive */
-        @media(max-width:640px){.section{padding:3rem 0}.container{padding:0 1rem}.cta-buttons .btn{width:100%;max-width:300px}.trust-metrics{grid-template-columns:repeat(2,1fr)}.services-grid{grid-template-columns:1fr}.steps{grid-template-columns:repeat(2,1fr)}.case-studies{grid-template-columns:1fr}.pricing{grid-template-columns:1fr}}
-        
-        @media(max-width:480px){.steps{grid-template-columns:1fr}.trust-metrics{grid-template-columns:1fr}}
-        
-        /* Accessibility */
-        *:focus{outline:2px solid var(--primary);outline-offset:2px}@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:0.01ms!important;animation-iteration-count:1!important;transition-duration:0.01ms!important}html{scroll-behavior:auto}.btn:hover{transform:none!important}.card:hover{transform:none!important}}
-        
-        /* Windows High Contrast */
-        @media(forced-colors:active){.card{border:1px solid CanvasText}.btn-primary{background:LinkText;color:Canvas}.btn-secondary{border-color:LinkText}}
+        a {color:var(--primary); text-decoration:none;}
+        a:hover {text-decoration:underline;}
     </style>
 </head>
 <body>
-    <!-- Skip Link -->
-    <a href="#main-content" class="skip-link">Skip to main content</a>
+    <div class="bg-glow"></div>
     
-    <!-- Header -->
-    <header class="header" role="banner">
-        <div class="container nav-container">
-            <div class="logo" aria-label="Otobrix AI">Otobrix<span class="primary-color">AI</span></div>
-            
-            <nav class="nav-links" aria-label="Main navigation">
-                <a href="#services">Services</a>
-                <a href="#calculator">ROI Calculator</a>
-                <a href="#pricing">Pricing</a>
-                <a href="#contact" class="btn-secondary">Book Audit</a>
-            </nav>
-            
-            <button class="mobile-menu-btn" aria-label="Open menu" aria-expanded="false" id="mobileMenuBtn">☰</button>
+    <div class="container">
+        <div class="status-badge">
+            <div class="pulse"></div>
+            <span>System Upgrade In Progress</span>
         </div>
-    </header>
-    
-    <!-- Mobile Menu -->
-    <div class="mobile-menu" id="mobileMenu" aria-hidden="true" role="dialog" aria-modal="true">
-        <div class="mobile-menu-header">
-            <div class="logo">Otobrix<span class="primary-color">AI</span></div>
-            <button class="mobile-menu-close" id="mobileMenuClose" aria-label="Close menu">×</button>
-        </div>
-        <nav class="mobile-nav-links" aria-label="Mobile navigation">
-            <a href="#services">Services</a>
-            <a href="#calculator">ROI Calculator</a>
-            <a href="#pricing">Pricing</a>
-            <a href="#contact" class="btn">Book Audit</a>
-        </nav>
+        
+        <div class="logo">Otobrix<span class="primary-color">AI</span></div>
+        
+        <h1>We are currently performing scheduled maintenance.</h1>
+        <p>Our automation systems are being upgraded to serve you better. We'll be back online shortly.</p>
+        
+        <a href="mailto:otobrixai@gmail.com">Contact Support →</a>
     </div>
     
-    <!-- Main Content -->
-    <main id="main-content">
-        <!-- Hero -->
-        <section class="hero section" aria-labelledby="hero-heading">
-            <div class="container">
-                <div class="hero-content">
-                    <h1 id="hero-heading">Recover Lost E-commerce Revenue — Automatically</h1>
-                    <p>We identify customers who are about to churn and trigger automated recovery workflows across email, SMS, and WhatsApp — before the revenue is gone.</p>
-                    
-                    <div class="cta-buttons">
-                        <a href="#contact" class="btn-primary">Get a Free Retention Audit</a>
-                        <a href="https://calendly.com/otobrix-ai/audit" target="_blank" rel="noopener" class="btn-secondary">Book a 20-minute call →</a>
-                    </div>
-                    
-                    <div class="hero-note">
-                        Production-grade n8n workflows — not experiments.
-                    </div>
-                </div>
-                
-                <!-- Trust Metrics -->
-                <div class="trust-metrics">
-                    <div class="metric">
-                        <div class="metric-value">35%+</div>
-                        <div class="metric-label">average revenue recovery</div>
-                    </div>
-                    <div class="metric">
-                        <div class="metric-value">Multi-channel</div>
-                        <div class="metric-label">Email, SMS, WhatsApp</div>
-                    </div>
-                    <div class="metric">
-                        <div class="metric-value">GDPR-safe</div>
-                        <div class="metric-label">Consent-aware workflows</div>
-                    </div>
-                    <div class="metric">
-                        <div class="metric-value">n8n</div>
-                        <div class="metric-label">Open, auditable, scalable</div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Problem / Solution -->
-        <section class="section" id="problem-solution" style="background: var(--surface);">
-            <div class="container">
-                <div class="services-grid" style="grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));">
-                    <!-- Problem -->
-                    <div class="card" style="border-left: 4px solid #ef4444;">
-                        <h3 style="color: #ef4444;">Why Most Retention Efforts Don’t Work</h3>
-                        <ul class="service-features" style="list-style: none; padding: 0;">
-                            <li style="padding-left: 0; display: flex; gap: 0.75rem; align-items: flex-start; margin-bottom: 1rem;"><span style="color: #ef4444;">✕</span> Generic "win-back" flows that trigger too late.</li>
-                            <li style="padding-left: 0; display: flex; gap: 0.75rem; align-items: flex-start; margin-bottom: 1rem;"><span style="color: #ef4444;">✕</span> Reliance on manual CSV exports.</li>
-                            <li style="padding-left: 0; display: flex; gap: 0.75rem; align-items: flex-start; margin-bottom: 1rem;"><span style="color: #ef4444;">✕</span> Expensive SaaS tools that own your data.</li>
-                            <li style="padding-left: 0; display: flex; gap: 0.75rem; align-items: flex-start; margin-bottom: 1rem;"><span style="color: #ef4444;">✕</span> Ignoring channel preferences (Email vs SMS).</li>
-                        </ul>
-                    </div>
-                    
-                    <!-- Solution -->
-                    <div class="card" style="border-left: 4px solid var(--primary);">
-                        <h3 class="primary-color">Otobrix AI fixes this by acting before customers leave</h3>
-                        <ul class="service-features" style="list-style: none; padding: 0;">
-                            <li style="padding-left: 0; display: flex; gap: 0.75rem; align-items: flex-start; margin-bottom: 1rem;"><span class="primary-color">✓</span> <strong>Predictive Scoring:</strong> We detect at-risk users 30 days out.</li>
-                            <li style="padding-left: 0; display: flex; gap: 0.75rem; align-items: flex-start; margin-bottom: 1rem;"><span class="primary-color">✓</span> <strong>Real-Time Triggers:</strong> Actions mapped to customer behavior.</li>
-                            <li style="padding-left: 0; display: flex; gap: 0.75rem; align-items: flex-start; margin-bottom: 1rem;"><span class="primary-color">✓</span> <strong>You Own The System:</strong> Built on your n8n instance.</li>
-                            <li style="padding-left: 0; display: flex; gap: 0.75rem; align-items: flex-start; margin-bottom: 1rem;"><span class="primary-color">✓</span> <strong>Smart Routing:</strong> Right message, right channel, right time.</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </section>
-        
-        <!-- Services -->
-        <section class="section" id="services" aria-labelledby="services-heading">
-            <div class="container">
-                <h2 id="services-heading" class="text-center">Services</h2>
-                
-                <div class="services-grid">
-                    <div class="card">
-                        <h3>Churn Prediction System</h3>
-                        <ul class="service-features" aria-label="System features">
-                            <li>Identify at-risk customers in real time.</li>
-                            <li>Behavioral signal analysis.</li>
-                            <li>30-day proactive alerts.</li>
-                        </ul>
-                        <a href="#contact" class="btn-secondary" style="width:100%">Learn More</a>
-                    </div>
-                    
-                    <div class="card">
-                        <h3>Automated Retention Campaigns</h3>
-                        <ul class="service-features" aria-label="Campaign features">
-                            <li>Recover revenue automatically.</li>
-                            <li>Email, SMS, & WhatsApp.</li>
-                            <li>Personalized incentives.</li>
-                        </ul>
-                        <a href="#contact" class="btn-secondary" style="width:100%">Learn More</a>
-                    </div>
-                    
-                    <div class="card">
-                        <h3>Ongoing Optimization</h3>
-                        <ul class="service-features" aria-label="Optimization features">
-                            <li>A/B testing retention offers.</li>
-                            <li>Channel performance tracking.</li>
-                            <li>Continuous ROI improvement.</li>
-                        </ul>
-                        <a href="#contact" class="btn-secondary" style="width:100%">Learn More</a>
-                    </div>
-                </div>
-            </div>
-        </section>
-        
-        <!-- How It Works -->
-        <section class="section" id="how-it-works" aria-labelledby="how-heading">
-            <div class="container">
-                <h2 id="how-heading" class="text-center">How It Works</h2>
-                
-                <div class="steps">
-                    <div class="step">
-                        <div class="step-number">1</div>
-                        <h3>Audit</h3>
-                        <p>We analyze your store data, churn points, and recovery gaps.</p>
-                    </div>
-                    <div class="step">
-                        <div class="step-number">2</div>
-                        <h3>Design</h3>
-                        <p>We build retention workflows tailored to your business.</p>
-                    </div>
-                    <div class="step">
-                        <div class="step-number">3</div>
-                        <h3>Deploy</h3>
-                        <p>Automations go live across your channels.</p>
-                    </div>
-                    <div class="step">
-                        <div class="step-number">4</div>
-                        <h3>Optimize</h3>
-                        <p>We continuously improve recovery performance.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-        
-        <!-- ROI Calculator -->
-        <section class="section" id="calculator" aria-labelledby="calculator-heading">
-            <div class="container">
-                <h2 id="calculator-heading" class="text-center">What Is Churn Costing You Right Now?</h2>
-                <p class="text-center" style="margin-bottom: 2rem;">Estimate how much revenue you’re losing — and how much can realistically be recovered.</p>
-                
-                <div class="calculator">
-                    <div class="input-group">
-                        <label for="revenue">Monthly Revenue ($)</label>
-                        <input type="number" id="revenue" min="1000" value="50000" required aria-required="true">
-                    </div>
-                    <div class="input-group">
-                        <label for="churn">Churn Rate: <span id="churn-value">5%</span></label>
-                        <input type="range" id="churn" min="1" max="20" value="5" aria-valuetext="5 percent">
-                    </div>
-                    <button id="calculate-btn" class="btn-secondary">Calculate</button>
-                    
-                    <div class="calculator-results" id="results" aria-live="polite">
-                        <div class="result">
-                            <div>Monthly loss</div>
-                            <div id="monthly-loss" class="number">$2,500</div>
-                        </div>
-                        <div class="result">
-                            <div>Yearly loss</div>
-                            <div id="yearly-loss" class="number">$30,000</div>
-                        </div>
-                        <div class="result">
-                            <div>Monthly recovery (35%)</div>
-                            <div id="monthly-recovery" class="number highlight">$875</div>
-                        </div>
-                        <div class="result">
-                            <div>Yearly recovery</div>
-                            <div id="yearly-recovery" class="number highlight">$10,500</div>
-                        </div>
-                    </div>
-                    <p class="note">Estimates are based on conservative recovery benchmarks observed across multiple e-commerce implementations.</p>
-                </div>
-            </div>
-        </section>
-        
-        <!-- Case Studies -->
-        <section class="section" id="case-studies" aria-labelledby="case-studies-heading">
-            <div class="container">
-                <h2 id="case-studies-heading" class="text-center">Case Studies</h2>
-                
-                <div class="case-studies">
-                    <div class="card">
-                        <h3>Premium Skincare Brand</h3>
-                        <p>42% churn reduction</p>
-                        
-                        <div class="case-study-stats">
-                            <div class="stat">
-                                <div class="stat-value">Automated</div>
-                                <div class="stat-label">recovery workflows</div>
-                            </div>
-                            <div class="stat">
-                                <div class="stat-value">8.2x</div>
-                                <div class="stat-label">ROI Achieved</div>
-                            </div>
-                        </div>
-                        
-                        <p class="text-muted small">Details anonymized at client request.</p>
-                    </div>
-                    
-                    <div class="card">
-                        <h3>Electronics Retailer</h3>
-                        <p>Manual campaign work drastically reduced</p>
-                        
-                        <div class="case-study-stats">
-                            <div class="stat">
-                                <div class="stat-value">$127,000</div>
-                                <div class="stat-label">Revenue Recovered</div>
-                            </div>
-                            <div class="stat">
-                                <div class="stat-value">160/mo</div>
-                                <div class="stat-label">Hours Saved</div>
-                            </div>
-                        </div>
-                        
-                        <p class="text-muted small">Details anonymized at client request.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-        
-        <!-- Testimonials -->
-        <section class="section" aria-labelledby="testimonials-heading">
-            <div class="container">
-                <h2 id="testimonials-heading" class="text-center">What Clients Say</h2>
-                
-                <div class="testimonials">
-                    <blockquote>
-                        “Otobrix helped us recover revenue we didn’t even realize we were losing. The workflows run quietly in the background and just work.”
-                        <footer>— Requested anonymity</footer>
-                    </blockquote>
-                    
-                    <blockquote>
-                        “This replaced multiple tools and manual campaigns with one automated system.”
-                        <footer>— Requested anonymity</footer>
-                    </blockquote>
-                </div>
-            </div>
-        </section>
-        
-        <!-- Pricing -->
-        <section class="section" id="pricing" aria-labelledby="pricing-heading">
-            <div class="container">
-                <h2 id="pricing-heading" class="text-center">Pricing</h2>
-                
-                <div class="pricing">
-                    <div class="card">
-                        <h3>Starter Audit</h3>
-                        <div class="plan-price">$500</div>
-                        <ul class="service-features" aria-label="Audit features">
-                            <li>Full churn analysis</li>
-                            <li>Recovery opportunity mapping</li>
-                            <li>Credited if you continue</li>
-                        </ul>
-                        <a href="#contact" class="btn-secondary" style="width:100%">Start with a Paid Audit</a>
-                    </div>
-                    
-                    <div class="card">
-                        <div class="badge">End-to-End System</div>
-                        <h3>Full Retention System</h3>
-                        <div class="plan-price">From $2,000<span>/mo</span></div>
-                        <ul class="service-features" aria-label="System features">
-                            <li>End-to-end churn prediction</li>
-                            <li>Multi-channel automation</li>
-                            <li>Continuous optimization</li>
-                        </ul>
-                        <a href="#contact" class="btn-primary" style="width:100%">Request My Audit</a>
-                    </div>
-                    
-                    <div class="card">
-                        <h3>Agency / White-Label</h3>
-                        <p>Available on request.</p>
-                        <a href="#contact" class="btn-secondary" style="width:100%">Contact Me</a>
-                    </div>
-                </div>
-                <div style="margin-top: 1rem; font-size: 0.875rem; color: var(--text-muted); text-align: center;">
-                    <strong>Note:</strong> All plans include n8n Community edition setup. Upgrade to Cloud/EE available.
-                </div>
-            </div>
-        </section>
-        
-        <!-- About / Founder -->
-        <section class="section" aria-labelledby="about-heading">
-            <div class="container">
-                <div class="about">
-                    <h2 id="about-heading" style="margin-bottom: 1rem;">Hi, I’m Md — an automation specialist based in Dhaka.</h2>
-                    <p>I build and operate production-grade n8n workflows for e-commerce businesses, focused on churn prediction, retention, and scalable automation systems.</p>
-                    <p style="color: var(--text-muted);">I don’t sell dashboards. I build systems that quietly recover revenue.</p>
-                </div>
-            </div>
-        </section>
-        
-        <!-- Contact -->
-        <section class="section" id="contact" aria-labelledby="contact-heading">
-            <div class="container">
-                <h2 id="contact-heading" class="text-center">Request Your Free Retention Audit</h2>
-                <p class="text-center" style="margin-bottom: 4rem; color: var(--text-muted);">No obligation. No generic advice. Just a clear view of where you’re losing revenue — and how to recover it.</p>
-                
-                <div class="contact-form">
-                    <form id="contact-form" action="https://script.google.com/macros/s/AKfycbzBvtYwDCL8Ll65V6cwcbGgRg3KUoDfbTkkRfOINzv4knYx00djWiM_BK4KkSGymO5Q/exec" method="POST" target="hidden-iframe">
-                        <!-- Honeypot -->
-                        <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off">
-                        
-                        <div class="form-group">
-                            <label for="name">Name</label>
-                            <input type="text" id="name" name="name" required aria-required="true">
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="email">Email</label>
-                            <input type="email" id="email" name="email" required aria-required="true">
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="store">Store URL</label>
-                            <input type="url" id="store" name="store">
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="message">Message</label>
-                            <textarea id="message" name="message" required aria-required="true"></textarea>
-                        </div>
-                        
-                        <button type="submit" class="btn-primary" style="width:100%">Request My Audit</button>
-                        
-                        <p class="form-note" style="text-align: center;">
-                            By submitting, you agree to our <a href="/privacy.html">Privacy Policy</a>.
-                        </p>
-                        
-                        <p class="form-note" style="text-align: center;">
-                            Or <a href="https://calendly.com/otobrix-ai/audit" target="_blank" rel="noopener" style="color: var(--primary);">book a 20-minute call →</a>
-                        </p>
-                    </form>
-                    
-                    <!-- Hidden iframe for form submission -->
-                    <iframe name="hidden-iframe" style="display:none"></iframe>
-                </div>
-            </div>
-        </section>
-    </main>
-    
-    <!-- Footer -->
-    <footer class="footer" role="contentinfo">
-        <div class="container">
-            <div class="footer-content">
-                <div>
-                    <strong>Otobrix AI</strong><br>
-                    AI Retention & Automation
-                </div>
-
-                <div>
-                    <br>© 2026 Otobrix AI
-                </div>
-            </div>
-        </div>
+    <footer>
+        &copy; 2026 Otobrix AI
     </footer>
-    
-    <!-- Inline JavaScript -->
-    <script>
-        // Performance tracking
-        const loadTime = Date.now() - performance.timing.navigationStart;
-        const loadTimeElement = document.getElementById('load-time');
-        if (loadTimeElement) {
-            loadTimeElement.textContent = `Page loaded in ${loadTime}ms`;
-        }
-        
-        // Mobile menu
-        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
-        const mobileMenuClose = document.getElementById('mobileMenuClose');
-        const mobileMenu = document.getElementById('mobileMenu');
-        
-        function openMobileMenu() {
-            mobileMenu.classList.add('active');
-            mobileMenu.setAttribute('aria-hidden', 'false');
-            mobileMenuBtn.setAttribute('aria-expanded', 'true');
-            document.body.style.overflow = 'hidden';
-            mobileMenuClose.focus();
-        }
-        
-        function closeMobileMenu() {
-            mobileMenu.classList.remove('active');
-            mobileMenu.setAttribute('aria-hidden', 'true');
-            mobileMenuBtn.setAttribute('aria-expanded', 'false');
-            document.body.style.overflow = '';
-            mobileMenuBtn.focus();
-        }
-        
-        mobileMenuBtn.addEventListener('click', openMobileMenu);
-        mobileMenuClose.addEventListener('click', closeMobileMenu);
-        
-        // Close menu with Escape
-        document.addEventListener('keydown', (e) => {
-            if (e.key === 'Escape' && mobileMenu.classList.contains('active')) {
-                closeMobileMenu();
-            }
-        });
-        
-        // Close menu when clicking outside
-        mobileMenu.addEventListener('click', (e) => {
-            if (e.target === mobileMenu) closeMobileMenu();
-        });
-        
-        // ROI Calculator
-        const revenueInput = document.getElementById('revenue');
-        const churnSlider = document.getElementById('churn');
-        const churnValue = document.getElementById('churn-value');
-        const calculateBtn = document.getElementById('calculate-btn');
-        const resultsDiv = document.getElementById('results');
-        
-        // Initial calculation
-        calculateROI();
-        
-        // Update churn value display
-        churnSlider.addEventListener('input', () => {
-            churnValue.textContent = `${churnSlider.value}%`;
-            churnSlider.setAttribute('aria-valuetext', `${churnSlider.value} percent`);
-        });
-        
-        // Calculate on button click
-        calculateBtn.addEventListener('click', (e) => {
-            e.preventDefault();
-            calculateROI();
-            trackEvent('calculator_used', 'engagement');
-        });
-        
-        // Calculate on input changes
-        revenueInput.addEventListener('input', calculateROI);
-        churnSlider.addEventListener('input', calculateROI);
-        
-        function calculateROI() {
-            const revenue = parseFloat(revenueInput.value) || 0;
-            const churnRate = parseFloat(churnSlider.value) || 0;
-            
-            // Validate inputs
-            if (revenue < 1000) {
-                revenueInput.value = 1000;
-                return;
-            }
-            
-            if (churnRate < 1 || churnRate > 20) {
-                churnSlider.value = Math.min(Math.max(churnRate, 1), 20);
-                return;
-            }
-            
-            // Calculate
-            const monthlyLoss = revenue * (churnRate / 100);
-            const yearlyLoss = monthlyLoss * 12;
-            const monthlyRecovery = monthlyLoss * 0.35; // 35% recovery
-            const yearlyRecovery = yearlyLoss * 0.35;
-            
-            // Update UI
-            document.getElementById('monthly-loss').textContent = `$${Math.round(monthlyLoss).toLocaleString()}`;
-            document.getElementById('yearly-loss').textContent = `$${Math.round(yearlyLoss).toLocaleString()}`;
-            document.getElementById('monthly-recovery').textContent = `$${Math.round(monthlyRecovery).toLocaleString()}`;
-            document.getElementById('yearly-recovery').textContent = `$${Math.round(yearlyRecovery).toLocaleString()}`;
-            
-            // Show results
-            resultsDiv.style.display = 'block';
-        }
-        
-        // Optimized Form Submission
-        const contactForm = document.getElementById('contact-form');
-        if (contactForm) {
-            contactForm.addEventListener('submit', function(e) {
-                e.preventDefault(); // Always prevent default to handle via JS
-                
-                console.log('Form submission started');
-                
-                // Validate fields
-                const nameInput = this.querySelector('[name="name"]');
-                const emailInput = this.querySelector('[name="email"]');
-                const messageInput = this.querySelector('[name="message"]');
-                const honeyInput = this.querySelector('[name="_honey"]');
-                
-                const name = nameInput ? nameInput.value.trim() : '';
-                const email = emailInput ? emailInput.value.trim() : '';
-                const message = messageInput ? messageInput.value.trim() : '';
-                const honeypot = honeyInput ? honeyInput.value : '';
-                
-                if (honeypot) {
-                    console.warn('Bot detected via honeypot');
-                    return;
-                }
-                
-                if (!name || !email || !message) {
-                    alert('Please fill in all required fields.');
-                    return;
-                }
-                
-                // Track event (wrapped in try-catch to prevent script failure)
-                try {
-                    trackEvent('form_submitted', 'conversion');
-                } catch (err) {
-                    console.error('Analytics error:', err);
-                }
-                
-                // UI States
-                const submitBtn = this.querySelector('button[type="submit"]');
-                const originalText = submitBtn.textContent;
-                submitBtn.textContent = 'Sending...';
-                submitBtn.disabled = true;
-                
-                // Prepare Data
-                const formData = new FormData(this);
-                const actionUrl = this.getAttribute('action');
-                
-                console.log('Sending data to:', actionUrl);
-                
-                // Use fetch with 'no-cors' to avoid preflight issues
-                // This is the most reliable way to send data to Google Script cross-domain
-                fetch(actionUrl, {
-                    method: 'POST',
-                    body: formData,
-                    mode: 'no-cors'
-                })
-                .then(() => {
-                    console.log('Submission successful (opaque response)');
-                    window.location.href = 'thanks.html';
-                })
-                .catch((error) => {
-                    console.error('Submission error:', error);
-                    // Still redirect because Google Script often records the hit even if catch triggers
-                    setTimeout(() => {
-                        window.location.href = 'thanks.html';
-                    }, 500);
-                });
-            });
-        }
-        
-        // Track CTA clicks
-        document.querySelectorAll('a.btn, button.btn').forEach(btn => {
-            btn.addEventListener('click', function() {
-                const label = this.textContent.trim() || this.getAttribute('href');
-                trackEvent('cta_click', 'engagement', label);
-            });
-        });
-        
-        // Track outbound links
-        document.querySelectorAll('a[target="_blank"]').forEach(link => {
-            link.addEventListener('click', function() {
-                trackEvent('outbound_click', 'engagement', this.href);
-            });
-        });
-        
-        // Smooth scrolling
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function(e) {
-                const href = this.getAttribute('href');
-                if (href === '#') return;
-                
-                e.preventDefault();
-                const target = document.querySelector(href);
-                if (target) {
-                    target.scrollIntoView({ behavior: 'smooth' });
-                    history.pushState(null, null, href);
-                }
-            });
-        });
-        
-        // Intersection Observer for animations
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
-        };
-        
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('animated');
-                }
-            });
-        }, observerOptions);
-        
-        // Observe cards and sections
-        document.querySelectorAll('.card, .section').forEach(el => {
-            observer.observe(el);
-        });
-        
-        // Analytics helper
-        function trackEvent(action, category, label) {
-            if (typeof gtag !== 'undefined') {
-                gtag('event', action, {
-                    event_category: category,
-                    event_label: label
-                });
-            }
-            console.log(`Event: ${action}, Category: ${category}, Label: ${label}`);
-        }
-        
-        // Load GA4 after page loads
-        window.addEventListener('load', () => {
-            // Load GA4
-            const script = document.createElement('script');
-            script.async = true;
-            script.src = 'https://www.googletagmanager.com/gtag/js?id=G-YOUR_MEASUREMENT_ID';
-            document.head.appendChild(script);
-            
-            // Initialize GA4
-            window.dataLayer = window.dataLayer || [];
-            function gtag(){dataLayer.push(arguments);}
-            gtag('js', new Date());
-            gtag('config', 'G-YOUR_MEASUREMENT_ID', {
-                anonymize_ip: true,
-                allow_google_signals: false,
-                allow_ad_personalization_signals: false
-            });
-            
-            // Respect Do Not Track
-            if (navigator.doNotTrack === "1") {
-                window['ga-disable-G-YOUR_MEASUREMENT_ID'] = true;
-            }
-            
-            // Track page view
-            trackEvent('page_view', 'engagement');
-        });
-    </script>
-    
-    <!-- Schema Markup -->
-    <script type="application/ld+json">
-    {
-        "@context": "https://schema.org",
-        "@graph": [
-            {
-                "@type": "ProfessionalService",
-                "@id": "https://otobrixai.com/#organization",
-                "name": "Otobrix AI",
-                "url": "https://otobrixai.com",
-                "logo": "https://otobrixai.com/assets/logo.png",
-                "description": "Dhaka-based n8n automation agency specializing in churn prediction and customer retention for e-commerce.",
-                "address": {
-                    "@type": "PostalAddress",
-                    "addressLocality": "Dhaka",
-                    "addressCountry": "BD"
-                },
-                "founder": {
-                    "@type": "Person",
-                    "name": "Md Monzurul Hoque",
-                    "url": "https://www.linkedin.com/in/md-monzurul-hoque/",
-                    "sameAs": ["https://www.linkedin.com/in/md-monzurul-hoque/"]
-                },
-                "priceRange": "$$"
-            },
-            {
-                "@type": "Service",
-                "name": "Retention Audit",
-                "provider": {"@id": "https://otobrixai.com/#organization"},
-                "description": "Comprehensive analysis of e-commerce churn patterns and revenue leakage.",
-                "offers": {
-                    "@type": "Offer",
-                    "price": "500",
-                    "priceCurrency": "USD"
-                }
-            },
-            {
-                "@type": "Service",
-                "name": "n8n Automation Implementation",
-                "provider": {"@id": "https://otobrixai.com/#organization"},
-                "description": "Custom n8n workflow development for automated customer recovery email/SMS sequences."
-            }
-        ]
-    }
-    </script>
 </body>
 </html>
